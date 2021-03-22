@@ -60,7 +60,6 @@ export cursor=''
 export cursor_command=''
 export output_path=''
 export output_file=''
-export date_of_output_file=''
 export previous_download=''
 export start_date=''
 export end_date=''
@@ -75,14 +74,12 @@ start_date=$(date --iso=s -d "$how_long_ago")
 
 end_date=$(date --iso=s -d "$until_when")
 
-date_of_output_file=$(date --iso -d "$start_date")
-
-output_path="$ingest_github/search/pages/$date_of_output_file"
+output_path="$ingest_github/search/pages/$end_date"
 
 output_file="$output_path/$page_number.json"
 
-test -d "$artifacts_dir" \
-    && rm -r "$artifacts_dir"
+test -d "$output_path" \
+    && rm -r "$output_path"
 
 test -d "$log_dir" \
     && rm -r "$log_dir"

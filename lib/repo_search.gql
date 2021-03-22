@@ -25,6 +25,9 @@ query {
           name
           pushedAt
           createdAt
+          primaryLanguage{name}
+          url
+
         }
       }
     },
