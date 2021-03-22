@@ -20,7 +20,7 @@ test -z "${GITHUB_TOKEN-}" \
     && echo "ERROR: You must set the GITHUB_TOKEN environment variable!" \
     && exit 1
 
-if [ -z "${3-}" ]
+if [ -z "${4-}" ]
 then
     echo "Usage: $(basename "${0-}") <how long ago> <until when> <org name> <search query>"
     echo
