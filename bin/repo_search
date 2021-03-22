@@ -22,7 +22,9 @@ test -z "${GITHUB_TOKEN-}" \
 
 if [ -z "${3-}" ]
 then
-  echo "Usage: $(basename "${0-}") <how long ago> <org name> <search query>"
+    echo "Usage: $(basename "${0-}") <how long ago> <until when> <org name> <search query>"
+    echo
+    echo "   eg: $(basename "${0-}") \"3 days ago\" now example-org \"archived:false is:internal is:private\""
   exit 1
 fi
 
