@@ -6,42 +6,25 @@ query {
     resetAt
   },
   search(
-    type: ISSUE,
+    type: REPOSITORY,
     query: \"
 
         org:$organization_name
 
-        updated:$start_date..$end_date
-
-        sort:updated-desc
+        pushed:$start_date..$end_date
 
         $github_search_query
     \",
     $cursor_command
     first: 20
   ) {
-    issueCount
+    repositoryCount
     edges {
       node {
-        ... on PullRequest {
-
-          repository{name}
-          number
-          title
-          url
-
-          mergedBy{resourcePath}
-
-          updatedAt
+        ... on Repository {
+          name
+          pushedAt
           createdAt
-          mergedAt
-          closedAt
-          baseRef{name}
-          commits{
-            totalCount
-          }
-          changedFiles
-          mergeCommit{oid}
         }
       }
     },
