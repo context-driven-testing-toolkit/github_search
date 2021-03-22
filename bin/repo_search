@@ -31,12 +31,17 @@ fi
 # Bind parameters to variables
 
 export how_long_ago=${1}
-export organization_name=${2}
-export github_search_query=${3}
+export until_when=${2}
+export organization_name=${3}
+export github_search_query=${4}
 
 # Assert the start date is a valid date string
 
 date -d "$how_long_ago" > /dev/null
+
+# Assert the end date is a valid date string
+
+date -d "$until_when" > /dev/null
 
 # Configuration
 
@@ -68,7 +73,7 @@ export page_number=1
 
 start_date=$(date --iso=s -d "$how_long_ago")
 
-end_date=$(date --iso=s -d now)
+end_date=$(date --iso=s -d "$until_when")
 
 date_of_output_file=$(date --iso -d "$start_date")
 
